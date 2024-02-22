@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+import os
+import py_compile
+import sys
+
 # Get the Python script filename from the environment variable
 pyfile = os.getenv('PYFILE')
 
@@ -6,9 +10,11 @@ if pyfile:
     # Compile the Python script
     try:
         py_compile.compile(pyfile, cfile=pyfile + 'c')
-        print(f"Compiled {pyfile} to {pyfile}c successfully!")
+        sys.exit(0)
     except Exception as e:
-        print(f"Error compiling {pyfile}: {e}")
+        sys.stderr.write(f"Error compiling {pyfile}: {e}\n")
+        sys.exit(1)
 else:
-    print("Environment variable PYFILE not set.")
- 
+    sys.stderr.write("Environment variable PYFILE not set.\n")
+    sys.exit(1)
+
