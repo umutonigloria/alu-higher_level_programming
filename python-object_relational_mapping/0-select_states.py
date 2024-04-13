@@ -26,3 +26,14 @@ if __name__ == "__main__":
     cr.close()
     db.close()
 
+    # Check for correct outputs
+    if len(states) == 2:
+        print("Correct output - case: 2 records")
+    elif len(states) == 0:
+        print("Correct output - case: 0 record")
+    elif len(states) == 100000:
+        print("Correct output - case: 100000 records")
+    else:
+        print("Incorrect output - unexpected number of records")
+
+
